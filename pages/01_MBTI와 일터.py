@@ -1,11 +1,21 @@
 # -*- coding: utf-8 -*-
 # 서브 페이지: MBTI 워크 스타일 분석
-# 이 파일은 반드시 pages/ 폴더 안에 있어야 합니다.
+# 위치: pages/01_MBTI와 일터.py
+# 주의: pokemon_data.py 는 저장소 루트(app.py 옆)에 있어야 합니다!
+ 
+import os
+import sys
+ 
+# ---- 경로 문제 방지: 상위 폴더(저장소 루트)를 모듈 검색 경로에 추가 ----
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+# --------------------------------------------------------------------
  
 import streamlit as st
 from pokemon_data import MBTI_POKEMON, MBTI_WORK, poke_img
  
-st.set_page_config(page_title="MBTI 워크 스타일 분석", page_icon="💼", layout="centered")
+st.set_page_config(page_title="MBTI와 일터", page_icon="💼", layout="centered")
  
 st.title("💼 MBTI 워크 스타일 분석")
 st.markdown("#### 본인의 MBTI를 알면 나와 가장 잘 맞는 최적의 일터 환경과 근무 위치, 업무 스타일을 파악할 수 있어요!")
@@ -78,4 +88,3 @@ else:
  
 st.divider()
 st.caption("Made with ⚡ Streamlit | 이미지: PokeAPI 공식 아트워크 | 재미로 봐주세요 😊")
- 
